@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>餐點選擇器</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        p {
+            font-size: 40px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .flexItem {
+            display: flex;
+            justify-content: center;
+        }
+        .stage {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        .category-image {
+            cursor: pointer;
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            transition: transform 0.5s;
+        }
+        .category-image:hover {
+            transform: scale(1.3);
+        }
+        .category-label {
+            margin-top: 25px;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px); /* 開始時下移 */
+            animation: slideUp 0.5s forwards;
+            animation-delay: 2s; /* 延遲到圖片動畫結束後顯示 */
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0); 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>選擇餐別</h1>
+    </div>
+
+    <div id="intro-stage" class="stage">
+        <div class="category-container">
+            <img src="breakfast.jpg" alt="早餐" class="category-image" onclick="chooseCategory('breakfast.html')">
+            <div class="category-label"><p>Breakfast</p></div>
+        </div>
+        <div class="category-container">
+            <img src="lunch.jpg" alt="午餐" class="category-image" onclick="chooseCategory('lunch.html')">
+            <div class="category-label"><p>Lunch</p></div>
+        </div>
+        <div class="category-container">
+            <img src="dinner.jpg" alt="晚餐" class="category-image" onclick="chooseCategory('dinner.html')">
+            <div class="category-label"><p>Dinner</p></div>
+        </div>
+    </div>
+    
+    <script>
+        function chooseCategory(category) {
+            // 跳轉到相應的子頁面
+            window.location.href = category;
+        }
+    </script>
+</body>
+</html>

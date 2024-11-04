@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>午餐選擇</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .stage {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .placeholder {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            display: inline-block;
+            text-align: center;
+            line-height: 100px; /* 垂直置中 */
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>午餐選擇</h1>
+    <div>
+        <h2>選擇餐點類別</h2>
+        <label><input type="checkbox" id="main" value="main"> 主餐</label>
+        <label><input type="checkbox" id="snack" value="snack"> 點心</label>
+        <label><input type="checkbox" id="drink" value="drink"> 飲料</label>
+        <button onclick="generateRandomChoices()">生成隨機選擇</button>
+    </div>
+
+    <div id="placeholders" class="stage">
+        <!-- 隨機餐點顯示區域 -->
+    </div>
+
+    <script>
+        function generateRandomChoices() {
+            const placeholders = document.getElementById("placeholders");
+            placeholders.innerHTML = '';
+
+            const selectedTypes = [];
+            if (document.getElementById("main").checked) selectedTypes.push("main");
+            if (document.getElementById("snack").checked) selectedTypes.push("snack");
+            if (document.getElementById("drink").checked) selectedTypes.push("drink");
+
+            if (selectedTypes.length === 0) {
+                alert("請至少選擇一種餐點類別！");
+                return;
+            }
+
+            const lunchData = {
+                main: ["午餐主餐1", "午餐主餐2", "午餐主餐3"],
+                snack: ["午餐點心1", "午餐點心2"],
+                drink: ["午餐飲料1", "午餐飲料2"]
+            };
+
+            selectedTypes.forEach(type => {
+                const items = lunchData[type];
+                const randomItem = items[Math.floor(Math.random() * items.length)];
+
+                const itemDiv = document.createElement("div");
+                itemDiv.className = "placeholder";
+                itemDiv.textContent = randomItem;
+                placeholders.appendChild(itemDiv);
+            });
+        }
+    </script>
+</body>
+</html>
