@@ -1,0 +1,42 @@
+/* 共用樣式 */
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+
+body {
+    font-family: 'cwTeXYen', sans-serif;
+    background-color: #fff;
+    color: #000;
+}
+
+
+nav {
+    background-color: #333;
+    padding: 1em;
+    text-align: center;
+}
+span {
+    margin-right: 15%;
+}
+nav a {
+    color: white;
+    margin: 0 1em;
+    text-decoration: none;
+}
+
+main {
+    padding: 1em;
+    text-align: center;
+}
+
+/* Dark Mode 樣式 */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode nav {
+    background-color: #222;
+}
+
+body.dark-mode nav a {
+    color: #ccc;
+}
